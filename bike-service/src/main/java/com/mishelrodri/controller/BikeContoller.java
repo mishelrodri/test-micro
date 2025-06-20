@@ -44,9 +44,6 @@ public class BikeContoller {
     @GetMapping("/by-user/{id}")
     public ResponseEntity<List<Bike>> getAllByUser(@PathVariable("id") int id) {
         List<Bike> bikes = bikeService.getAllByIdUser(id);
-        if (bikes.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
         return ResponseEntity.ok(bikes);
     }
 
