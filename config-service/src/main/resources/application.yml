@@ -7,7 +7,9 @@ spring:
       server:
         git:
           default-label: master
-          uri: https://github.com/mishelrodri/microservices-luigi-code
+          uri: https://github.com/mishelrodri/test-micro
           search-paths: config-data
+#          username: mishelrodri
+#          password: token basic
   application:
     name: config-service
