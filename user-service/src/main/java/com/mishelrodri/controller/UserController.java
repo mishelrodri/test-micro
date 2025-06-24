@@ -103,7 +103,7 @@ public class UserController {
         return  ResponseEntity.ok("El usuario "+ userId + "tiene las motos en el taller");
     }
 
-    public ResponseEntity<?> fallBackSaveBikes(@RequestBody Bike bike){
+    public ResponseEntity<?> fallBackSaveBikes(@RequestBody Bike bike, RuntimeException e){
         return ResponseEntity.ok("El usuario nop tiene dinero para motos");
     }
 
