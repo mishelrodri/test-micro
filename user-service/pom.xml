@@ -79,6 +79,17 @@
 			<groupId>io.zipkin.reporter2</groupId>
 			<artifactId>zipkin-reporter-brave</artifactId>
 		</dependency>
+		<!--
+		  🔴 Esta dependencia habilita la integración automática entre Feign y Micrometer Tracing.
+		  Es necesaria para que los encabezados de trazabilidad (como X-B3-TraceId) se propaguen
+		  automáticamente en llamadas entre microservicios usando Feign.
+		  Sin esta dependencia, aunque Micrometer esté configurado, Feign no enviará los headers
+		  necesarios y cada servicio generará trazas separadas en Zipkin.
+		-->
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-micrometer</artifactId>
+		</dependency>
 
 	</dependencies>
 

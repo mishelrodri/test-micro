@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/car")
@@ -35,7 +36,10 @@ public class CarController {
     }
 
     @PostMapping
-    public ResponseEntity<Car> save(@RequestBody Car card) {
+    public ResponseEntity<Car> save(@RequestBody Car card,@RequestHeader Map<String, String> headers) {
+
+        System.out.println("HEADERS EN CAR-SERVICE:");
+        headers.forEach((k, v) -> System.out.println("🔴 "+ k + ": " + v));
         Car carNew = carService.save(card);
 
         return ResponseEntity.ok(carNew);
