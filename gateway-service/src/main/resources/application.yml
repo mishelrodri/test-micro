@@ -6,16 +6,22 @@ spring:
   security:
     oauth2:
       client:
-        provider:
-          keycloak:
-            authorization-uri: http://localhost:8180/realms/tutorial-realm/protocol/openid-connect/auth
-            userinfo-uri: http://localhost:8180/realms/tutorial-realm/protocol/openid-connect/userinfo
-            user-name-attribute: preferred_username
-            token-uri: http://localhost:8180/realms/tutorial-realm/protocol/openid-connect/token
         registration:
           tutorial-client:
             provider: keycloak
             client-id: tutorial-client
-            client-secret: secreto # 🔴 NO SUBIR
+            client-secret: secret
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/tutorial-client"
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8180/realms/tutorial
+
+
+logging:
+  level:
+    org.springframework.security: DEBUG
