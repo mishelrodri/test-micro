@@ -3,6 +3,11 @@ spring:
     name: user-service
   config:
       import: optional:configserver:http://localhost:8081
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/tutorial-realm
 
 logging:
   level:

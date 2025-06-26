@@ -3,3 +3,19 @@ spring:
     name: gateway-service
   config:
     import: optional:configserver:http://localhost:8081
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8180/realms/tutorial-realm/protocol/openid-connect/auth
+            userinfo-uri: http://localhost:8180/realms/tutorial-realm/protocol/openid-connect/userinfo
+            user-name-attribute: preferred_username
+            token-uri: http://localhost:8180/realms/tutorial-realm/protocol/openid-connect/token
+        registration:
+          tutorial-client:
+            provider: keycloak
+            client-id: tutorial-client
+            client-secret: secreto # 🔴 NO SUBIR
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/tutorial-client"
